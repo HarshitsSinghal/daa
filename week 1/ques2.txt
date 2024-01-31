@@ -32,9 +32,22 @@ int main()
     return 0;
 }
 int binarysearch(int a[],int n,int lb,int ub,int el )
-{   
+{
     int mid,i;
-    mid=(lb+ub)/2;
-    if(a[mid]<el)
-        
+    while(a[mid]!=el)
+    {
+        mid=(lb+ub)/2;
+        if(a[mid]<el)
+            ub=mid;
+        else if(a[mid]>el)
+            lb=mid;
+    }
+    if(a[mid]=el)
+    {
+        return mid+1;
+    }
+    else
+    {
+        return 0;
+    }
 }
