@@ -39,11 +39,11 @@ int binarysearch(int a[],int n,int lb,int ub,int el )
     {
         mid=(lb+ub)/2;
         if(a[mid]<el)
-            ub=mid;
-        else if(a[mid]>el)
             lb=mid;
+        else if(a[mid]>el)
+            ub=mid;
     }
-    if(a[mid]=el)
+    if(a[mid]==el)
     {
         return mid+1;
     }
