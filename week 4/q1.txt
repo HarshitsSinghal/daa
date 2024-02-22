@@ -1,0 +1,85 @@
+#include<iostream>
+using namespace std;
+void Ms(int [],int,int);
+void merge(int[],int,int,int);
+int inv=0;
+int comp=0;
+int main()
+{
+	int tc,i,j,n,a[100];
+	cout<<"enter number of test cases: ";
+	cin>>tc;
+	for(i=0;i<tc;i++)
+	{
+		cout<<"enter size of array: ";
+		cin>>n;
+		cout<<"enter elements:"<<endl;
+		for(j=0;j<n;j++)
+		{
+			cin>>a[j];
+		}
+		int l=0;
+		int h=n-1;
+		Ms(a,l,h);
+		for(j=0;j<n;j++)
+		{
+	        cout<<a[j]<<" ";
+		}	
+        cout<<endl<<"comparision: "<<comp<<endl;		
+        cout<<"inversion: "<<inv<<endl;
+		
+	}
+	return 0;
+}
+void Ms(int a[],int l,int h)
+{
+	if(l<h)
+	{
+		int mid = l+(h-l)/2;
+		Ms(a,l,mid);
+		Ms(a,mid+1,h);
+		merge(a,l,mid,h);
+	}
+}
+void merge(int a[],int l,int mid,int h)
+{
+    int i,j,k;
+    int n1=mid-l+1;
+    int n2=h-mid;
+    int L[n1],M[n2];
+    for (i = 0; i < n1; i++)
+        L[i] = a[l + i];
+    for (j = 0; j < n2; j++)
+        M[j] = a[mid + 1 + j];
+    i=j=0;
+    k=l;
+    while (i < n1 && j < n2) 
+    {   
+        comp++;
+        if (L[i] <= M[j]) 
+        {
+            a[k] = L[i];
+            i++;
+        } else 
+        {
+            a[k] = M[j];
+            inv=inv+(n1-i);
+            j++;
+        }
+        k++;
+    }
+    while (i < n1) 
+    {
+        a[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) 
+    {
+        a[k] = M[j];
+        j++;
+        k++;
+    }
+}
+							
