@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int tc,i,j,n;
+	char a[100];
+	cout<<"enter number of test cases: ";
+	cin>>tc;
+	for(i=0;i<tc;i++)
+	{
+		cout<<"enter size of array: ";
+		cin>>n;
+		cout<<"enter elements:"<<endl;
+		for(j=0;j<n;j++)
+		{
+			cin>>a[j];
+		}
+		int arr[26]={0};
+		for(j=0;j<n;j++)
+		{
+			arr[a[j]-'a']++;
+		}
+		int max=arr[0];
+		int k=0;
+		for(j=1;j<26;j++)
+		{
+			if(arr[j]>max)
+			{
+				max=arr[j];
+				k=j;
+			}
+				
+		}
+		char c=k+65;
+		if(max>1)
+			cout<<c<<"-"<<max<<endl;
+		else
+			cout<<"NO DUPLICATES"<<endl;
+	}
+}
+		
